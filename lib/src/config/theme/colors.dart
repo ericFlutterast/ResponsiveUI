@@ -7,7 +7,7 @@ abstract class CustomTheme {
 
   static double contentPadding = 16.0;
 
-  static Icons icons = Icons();
+  static Icons icons = const Icons();
 }
 
 class Icons {
