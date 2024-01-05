@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_disign/src/config/theme/colors.dart';
 
 void main() {
   runApp(const AdaptiveDisign());
@@ -9,8 +11,15 @@ class AdaptiveDisign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: CustomTheme.backgroundColor,
+          cardColor: CustomTheme.secondaryColor,
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
+            bodyColor: Colors.white,
+          )),
+      home: const HomePage(),
     );
   }
 }
