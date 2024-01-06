@@ -15,8 +15,8 @@ class AdaptiveDisign extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: CustomTheme.backgroundColor,
-          cardColor: CustomTheme.secondaryColor,
+          scaffoldBackgroundColor: CustomTheme.colors.backgroundColor,
+          cardColor: CustomTheme.colors.secondaryColor,
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
             bodyColor: Colors.white,
           )),

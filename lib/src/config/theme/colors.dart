@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 abstract class CustomTheme {
-  static Color primaryColor = const Color.fromARGB(255, 222, 38, 255);
-  static Color secondaryColor = const Color.fromARGB(255, 62, 42, 61);
-  static Color backgroundColor = const Color.fromARGB(255, 50, 33, 49);
+  static ColorsTheme colors = const ColorsTheme();
+  static Icons icons = const Icons();
 
   static double contentPadding = 16.0;
-
-  static Icons icons = const Icons();
 }
 
 class Icons {
@@ -64,4 +61,16 @@ class Icons {
   });
 
   static const String _iconsPath = 'assets/icons/';
+}
+
+class ColorsTheme {
+  final Color primaryColor;
+  final Color secondaryColor;
+  final Color backgroundColor;
+
+  const ColorsTheme({
+    this.backgroundColor = const Color.fromARGB(255, 50, 33, 49),
+    this.primaryColor = const Color.fromARGB(255, 92, 37, 102),
+    this.secondaryColor = const Color.fromARGB(255, 62, 42, 61),
+  });
 }

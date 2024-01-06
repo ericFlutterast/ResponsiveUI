@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/screens/dashboard_screen.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -6,18 +7,14 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Row(
           children: [
-            const Expanded(
-              child: SideMenu(),
-            ),
+            Expanded(child: SideMenu()),
             Expanded(
               flex: 5,
-              child: Container(
-                color: Colors.blue,
-              ),
+              child: DashboardScreen(),
             ),
           ],
         ),
