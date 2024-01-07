@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 abstract class CustomTheme {
   static ColorsTheme colors = const ColorsTheme();
-  static Icons icons = const Icons();
+  static AppIcons icons = const AppIcons();
 
   static double contentPadding = 16.0;
 }
 
-class Icons {
+class AppIcons {
   final String docFile;
   final String documents;
   final String dropBox;
@@ -33,7 +33,7 @@ class Icons {
   final String unknown;
   final String xdFile;
 
-  const Icons({
+  const AppIcons({
     this.docFile = '${_iconsPath}doc_file.svg',
     this.documents = '${_iconsPath}Documents.svg',
     this.dropBox = '${_iconsPath}drop_box.svg',

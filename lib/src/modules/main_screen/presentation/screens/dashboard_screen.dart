@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/header.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -10,32 +11,9 @@ class DashboardScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Padding(
             padding: EdgeInsets.all(CustomTheme.contentPadding),
-            child: Column(
+            child: const Column(
               children: [
-                Row(
-                  children: [
-                    const Text(
-                      'Sonia Jopa',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const Spacer(),
-                    Expanded(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          fillColor: CustomTheme.colors.secondaryColor,
-                          filled: true,
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                Header(),
               ],
             )),
       ),
