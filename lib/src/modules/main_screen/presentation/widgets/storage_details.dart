@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
-import 'package:responsive_disign/src/modules/main_screen/domain/details_item_data.dart';
+import 'package:responsive_disign/src/modules/main_screen/domain/models/details_item_data.dart';
 
 List<(Color color, double value)> chartsData = [
   (Colors.purple, 25),
