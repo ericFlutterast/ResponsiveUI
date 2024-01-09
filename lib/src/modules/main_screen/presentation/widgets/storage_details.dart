@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
+import 'package:responsive_disign/src/modules/main_screen/domain/details_item_data.dart';
 
 List<(Color color, double value)> chartsData = [
   (Colors.purple, 25),
@@ -38,8 +39,13 @@ class StorageDetails extends StatelessWidget {
             SizedBox(height: CustomTheme.contentPadding),
             const _PieChartWidget(),
             SizedBox(height: CustomTheme.contentPadding),
-            ...List.generate(4, (index) {
-              return const _DetailsItem();
+            ...List.generate(detailsData.length, (index) {
+              return _DetailsItem(
+                title: detailsData[index].title,
+                volume: detailsData[index].volume,
+                iconPath: detailsData[index].iconPath,
+                amoutOfFiles: detailsData[index].amoutOfFiles,
+              );
             }),
           ],
         ),
@@ -49,7 +55,17 @@ class StorageDetails extends StatelessWidget {
 }
 
 class _DetailsItem extends StatelessWidget {
-  const _DetailsItem();
+  final String iconPath;
+  final String title;
+  final double volume;
+  final int amoutOfFiles;
+
+  const _DetailsItem({
+    required this.title,
+    required this.volume,
+    required this.iconPath,
+    required this.amoutOfFiles,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +74,7 @@ class _DetailsItem extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
-          color: CustomTheme.colors.primaryColor.withOpacity(0.5),
+          color: CustomTheme.colors.primaryColor,
         ),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
@@ -69,20 +85,20 @@ class _DetailsItem extends StatelessWidget {
             SizedBox(
               height: 20,
               width: 20,
-              child: SvgPicture.asset(CustomTheme.icons.documents),
+              child: SvgPicture.asset(iconPath),
             ),
             SizedBox(width: CustomTheme.contentPadding / 2),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Documents files',
+                  Text(
+                    title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    '1328 files',
+                    '$amoutOfFiles files',
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: Colors.white30,
                         ),
@@ -90,7 +106,7 @@ class _DetailsItem extends StatelessWidget {
                 ],
               ),
             ),
-            const Text('1.3GB'),
+            Text('${volume}GB'),
           ],
         ),
       ),
