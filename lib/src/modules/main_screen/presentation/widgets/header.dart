@@ -53,7 +53,7 @@ class ProfileCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: CustomTheme.contentPadding / 2),
             child: Text(
-              'Sonia Jopkina',
+              'Flutter Flutter',
               style: GoogleFonts.benne(),
             ),
           ),
