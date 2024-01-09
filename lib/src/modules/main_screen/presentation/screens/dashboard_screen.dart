@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/dashboard_content.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/header.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/storage_details.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -16,20 +18,17 @@ class DashboardScreen extends StatelessWidget {
               const Header(),
               SizedBox(height: CustomTheme.contentPadding),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                      flex: 5,
-                      child: Container(
-                        height: 500,
-                        color: Colors.white,
-                      )),
+                  const Expanded(
+                    flex: 5,
+                    child: DashboardContent(),
+                  ),
                   SizedBox(width: CustomTheme.contentPadding),
-                  Expanded(
-                      flex: 2,
-                      child: Container(
-                        height: 500,
-                        color: Colors.pink,
-                      )),
+                  const Expanded(
+                    flex: 2,
+                    child: StorageDetails(),
+                  ),
                 ],
               )
             ],
