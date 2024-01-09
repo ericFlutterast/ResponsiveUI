@@ -19,7 +19,7 @@ class Header extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const Spacer(),
+        const Spacer(flex: 2),
         const Expanded(child: SearchWidget()),
         SizedBox(width: CustomTheme.contentPadding),
         const ProfileCard()
