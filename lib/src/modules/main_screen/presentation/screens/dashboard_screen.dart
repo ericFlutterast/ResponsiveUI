@@ -3,6 +3,7 @@ import 'package:responsive_disign/src/config/theme/colors.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/dashboard_content.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/header.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/storage_details.dart';
+import 'package:responsive_disign/src/shared/widgets/responsive.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -25,10 +26,11 @@ class DashboardScreen extends StatelessWidget {
                     child: DashboardContent(),
                   ),
                   SizedBox(width: CustomTheme.contentPadding),
-                  const Expanded(
-                    flex: 2,
-                    child: StorageDetails(),
-                  ),
+                  if (!Responsive.isMobile(context))
+                    const Expanded(
+                      flex: 2,
+                      child: StorageDetails(),
+                    ),
                 ],
               )
             ],

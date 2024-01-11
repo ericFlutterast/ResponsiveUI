@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/providers/provider.dart';
+import 'package:responsive_disign/src/shared/widgets/responsive.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -12,6 +15,11 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        if (!Responsive.isDesktop(context))
+          IconButton(
+            onPressed: () => context.read<SideMenuProvider>().controlMenu(),
+            icon: const Icon(Icons.menu),
+          ),
         const Text(
           'Dashboard',
           style: TextStyle(
@@ -19,7 +27,8 @@ class Header extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const Spacer(flex: 2),
+        if (!Responsive.isMobile(context)) Spacer(flex: !Responsive.isDesktop(context) ? 2 : 1),
+        if (Responsive.isMobile(context)) SizedBox(width: CustomTheme.contentPadding),
         const Expanded(child: SearchWidget()),
         SizedBox(width: CustomTheme.contentPadding),
         const ProfileCard()

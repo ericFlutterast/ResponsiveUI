@@ -19,17 +19,15 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final Widget buildingScreen = switch (constraints.maxWidth) {
-          < 850 => mobile,
-          >= 1100 => desktop,
-          >= 850 || < 1100 => tablet,
-          _ => throw Exception(),
-        };
+    final width = MediaQuery.of(context).size.width;
 
-        return buildingScreen;
-      },
-    );
+    final Widget buildingScreen = switch (width) {
+      < 850 => mobile,
+      >= 1100 => desktop,
+      >= 850 || < 1100 => tablet,
+      _ => throw Exception(),
+    };
+
+    return buildingScreen;
   }
 }

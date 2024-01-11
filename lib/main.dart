@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/providers/provider.dart';
 import 'package:responsive_disign/src/modules/main_screen/presentation/screens/main_screen.dart';
 
 void main() {
@@ -20,7 +22,10 @@ class AdaptiveDisign extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
             bodyColor: Colors.white,
           )),
-      home: const HomePage(),
+      home: ChangeNotifierProvider(
+        create: (context) => SideMenuProvider(key: GlobalKey<ScaffoldState>()),
+        child: const HomePage(),
+      ),
     );
   }
 }

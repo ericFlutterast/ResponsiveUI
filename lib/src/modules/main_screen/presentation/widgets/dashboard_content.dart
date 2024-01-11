@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_disign/src/config/theme/colors.dart';
 import 'package:responsive_disign/src/modules/main_screen/domain/models/cloud_storage_data.dart';
-import 'package:responsive_disign/src/modules/main_screen/presentation/screens/recent_file_data.dart';
+import 'package:responsive_disign/src/modules/main_screen/domain/models/recent_file_data.dart';
+import 'package:responsive_disign/src/modules/main_screen/presentation/widgets/storage_details.dart';
+import 'package:responsive_disign/src/shared/widgets/responsive.dart';
 
 class DashboardContent extends StatelessWidget {
   const DashboardContent({super.key});
@@ -23,6 +25,8 @@ class DashboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         Row(
@@ -47,7 +51,17 @@ class DashboardContent extends StatelessWidget {
           ],
         ),
         SizedBox(height: CustomTheme.contentPadding),
-        const StorageInfo(),
+        Responsive(
+          mobile: StorageInfo(
+            crossAxisCount: size.width < 650 ? 2 : 4,
+            childAspectRatio: size.width < 650 ? 1.3 : 1,
+          ),
+          tablet: const StorageInfo(),
+          desktop: StorageInfo(
+            childAspectRatio: size.width < 1400 ? 1.1 : 1.4,
+            crossAxisCount: 4,
+          ),
+        ),
         SizedBox(height: CustomTheme.contentPadding),
         Container(
           padding: EdgeInsets.all(CustomTheme.contentPadding),
@@ -101,15 +115,22 @@ class DashboardContent extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
+        SizedBox(height: CustomTheme.contentPadding),
+        if (Responsive.isMobile(context)) const StorageDetails()
       ],
     );
   }
 }
 
 class StorageInfo extends StatelessWidget {
+  final int crossAxisCount;
+  final double childAspectRatio;
+
   const StorageInfo({
     super.key,
+    this.crossAxisCount = 4,
+    this.childAspectRatio = 1,
   });
 
   @override
@@ -117,10 +138,13 @@ class StorageInfo extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       itemCount: 4,
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: listOfCloudStorageData.length,
-          crossAxisSpacing: CustomTheme.contentPadding,
-          childAspectRatio: 1.4),
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: CustomTheme.contentPadding,
+        mainAxisSpacing: CustomTheme.contentPadding,
+        childAspectRatio: childAspectRatio,
+      ),
       itemBuilder: (context, index) => Container(
         decoration: BoxDecoration(
           color: CustomTheme.colors.secondaryColor,
