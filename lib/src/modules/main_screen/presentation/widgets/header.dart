@@ -20,13 +20,14 @@ class Header extends StatelessWidget {
             onPressed: () => context.read<SideMenuProvider>().controlMenu(),
             icon: const Icon(Icons.menu),
           ),
-        const Text(
-          'Dashboard',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
+        if (!Responsive.isMobile(context))
+          const Text(
+            'Dashboard',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
         if (!Responsive.isMobile(context)) Spacer(flex: !Responsive.isDesktop(context) ? 2 : 1),
         if (Responsive.isMobile(context)) SizedBox(width: CustomTheme.contentPadding),
         const Expanded(child: SearchWidget()),
@@ -59,13 +60,14 @@ class ProfileCard extends StatelessWidget {
             'assets/images/profile_pic.png',
             height: 38,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: CustomTheme.contentPadding / 2),
-            child: Text(
-              'Flutter Flutter',
-              style: GoogleFonts.benne(),
+          if (!Responsive.isMobile(context))
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: CustomTheme.contentPadding / 2),
+              child: Text(
+                'Flutter Flutter',
+                style: GoogleFonts.benne(),
+              ),
             ),
-          ),
           const Icon(Icons.keyboard_arrow_down),
         ],
       ),
